@@ -1,0 +1,11 @@
+---
+- name: provision vagrant stuffs
+  hosts: all
+  tasks:
+    - name: install packages
+      yum:
+        name: "{{ item }}"
+        state: installed
+      with_items:
+        - tree
+        - git

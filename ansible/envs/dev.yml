@@ -1,0 +1,32 @@
+---
+vagranthost: '127.0.0.1'
+dockerhost: '192.168.99.101'
+vagrant_hosts:
+  - name: prime
+    address: 192.168.99.90
+    hostname: prime.example.com
+    autostart: true
+    primary: true
+    ssh_port: 3201
+    box: bento/centos-6.7
+  - name: ext
+    address: 192.168.99.92
+    hostname: ext.example.com
+    autostart: false
+    primary: false
+    ssh_port: 3202
+    box: bento/centos-6.7
+
+containers:
+  - name: build
+    image: 'centos'
+    ssh_port: 3000
+    ssh_dest_port: 22
+    autostart: true
+    pull: true
+  - name: dev
+    image: 'centos'
+    ssh_port: 3001
+    ssh_dest_port: 22
+    autostart: true
+    pull: true
